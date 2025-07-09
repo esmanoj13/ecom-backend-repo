@@ -4,7 +4,7 @@
 import dotenv from 'dotenv';
 dotenv.config();
 import User from "../db/user.js";
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from "jsonwebtoken";
 import nodemailer from 'nodemailer';
 

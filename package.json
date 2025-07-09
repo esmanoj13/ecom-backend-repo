@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
@@ -10,14 +10,15 @@
     "nodemailer": "^7.0.3",
     "url": "^0.11.4"
   },
-  "name": "app.js",
+  "name": "ecom-backend",
   "version": "1.0.0",
   "description": "this is express",
   "main": "app.js",
   "type": "module",
   "scripts": {
     "start": "node app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "npm rebuild bcrypt --build-from-source"
   },
   "author": "manoj",
   "license": "ISC"
