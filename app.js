@@ -21,7 +21,11 @@ app.use(express.json());
 // const userRoutes = require("./route/user");
 
 // const { verifyToken, isAdmin } = require('./Middleware/auth.middleware');
-app.use(cors({ origin: 'http://localhost:4200', credentials: true }));
+app.use(cors({
+    origin: ['http://localhost:4200', 'https://mean-ecom.vercel.app'],
+    credentials: true
+}));
+app.use('/images', express.static('public/images'));
 import categoryRoutes from "./route/category.js";
 import brandRoutes from "./route/brand.js";
 import productRoutes from "./route/product.js";
@@ -54,7 +58,7 @@ app.use("/category", categoryRoutes);
 app.use("/brand", brandRoutes);
 app.use("/product", productRoutes);
 app.use("/customer", verifyToken, customerRoutes);
-app.use('/images', express.static('public/images'));
+
 app.use('/order', verifyToken, orderRoutes);
 
 // app.use("/category", categoryRoutes);
