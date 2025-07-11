@@ -21,10 +21,26 @@ app.use(express.json());
 // const userRoutes = require("./route/user");
 
 // const { verifyToken, isAdmin } = require('./Middleware/auth.middleware');
+// app.use(cors({
+//     origin: ['http://localhost:4200', 'https://mean-ecom.vercel.app'],
+//     credentials: true
+// }));
+const allowedOrigins = ['http://localhost:4200', 'https://mean-ecom.vercel.app'];
+
 app.use(cors({
-    origin: ['http://localhost:4200', 'https://mean-ecom.vercel.app'],
-    credentials: true
+    origin: function (origin, callback) {
+        // allow requests with no origin like curl/postman
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS policy: Not allowed by CORS'));
+        }
+    },
+    credentials: true,
 }));
+
+// Optional: Handle preflight requests for all routes
+app.options('*', cors());
 app.use('/images', express.static('public/images'));
 import categoryRoutes from "./route/category.js";
 import brandRoutes from "./route/brand.js";
